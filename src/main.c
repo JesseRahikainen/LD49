@@ -2769,7 +2769,7 @@ void factoryEntranceScene( void )
 	pushSkillBasedChoice( &sbChoices, "Convince it you're a friend. (Lie)", SKL_LIE, 18,
 		factoryEntranceLieSuccess, factoryEntranceLieCostly, factoryEntranceLieFailure );
 	pushSkillBasedChoice( &sbChoices, "Try and find an off switch. (Investigate)", SKL_INVESTIGATE, 16,
-		factoryEntranceShootSuccess, factoryEntranceShootCostly, factoryEntranceShootFailure );
+		factoryEntranceInvestigateSuccess, factoryEntranceInvestigateCostly, factoryEntranceInvestigateFailure );
 
 	if( isCharacterClass( CC_DEV_TEST ) ) {
 		pushSimpleChoice( &sbChoices, "Test shoot success", factoryEntranceShootSuccess );
@@ -7758,7 +7758,7 @@ void meetFredaScene( void )
 		startPlayDraw( ); {
 
 			pos = drawString( descriptionSafeArea.Left, descriptionSafeArea.Top, descriptionSafeArea,
-				"You step out of small house, all your equipment ready and mentally steeled for journey ahead.\n"
+				"You step out of your small house, all your equipment ready and mentally steeled for journey ahead.\n"
 				"Outside you almost bump into a woman waiting in front of you door. She's wearing scholar robes and is carrying a large pack.\n\n"
 				"After steadying herself she smiles, introducing herself as %s, the scholar you're "
 				"to escort to the factory. As you shake her hand you feel the cold metal contacts embedded into her hands. The sign of being "
@@ -8783,6 +8783,7 @@ void deathScene( void )
 	} endDraw( );
 
 	waitForAnyInput( );
+	nextScene = NULL;
 	currentScene = titleScene;
 }
 
@@ -9027,6 +9028,7 @@ int main( int argc, char** argv )
 
 	currentScene = titleScene;
 
+	// approximately 14200 words, holy fuck!
 	while( 1 ) {
 		currentScene( );
 	}
